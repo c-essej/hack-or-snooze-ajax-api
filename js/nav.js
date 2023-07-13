@@ -6,11 +6,21 @@
 
 /** Show main list of all stories when click site name */
 
+function navBarSubmitClick(evt){
+  evt.preventDefault();
+  hidePageComponents()
+  $allStoriesList.show()
+  $submitForm.show()
+}
+
+
+
 function navAllStories(evt) {
   console.debug("navAllStories", evt);
   evt.preventDefault();
   hidePageComponents();
   putStoriesOnPage();
+
 }
 
 $body.on("click", "#nav-all", navAllStories);

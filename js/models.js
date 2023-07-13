@@ -75,20 +75,21 @@ class StoryList {
 
   async addStory(user, {title, author, url}) {
     // UNIMPLEMENTED: complete this function!
-    const token = user.loginToken;
-
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvY28xIiwiaWF0IjoxNjg5MjgyNDY2fQ.AfPBipix3Ak3_uHpymF7Dc7XLljxjq-13jaF1vJ-diE";
     const response = await axios({
       url: `${BASE_URL}/stories`,
       method: "POST",
-      data: {story: {title, author, url} },
-      token: token,
+      data: {token: token , story: {title, author, url} },
     });
 
     console.log("response=", response);
-
-    const newStoryInstance = new Story(response.data);
-    this.story.push(newStoryInstance);
-    return newStoryInstance;
+    const newStoryInstance = new Story(response.data.story);
+    console.log("newStoryInstance:", newStoryInstance)
+    // this.story.push(newStoryInstance);
+    // return newStoryInstance;
+    //TODO: WHY CANT I USE PUSH??? 
+    this.stories.unshift(newStoryInstance)
+    return newStoryInstance
   }
 
 }
