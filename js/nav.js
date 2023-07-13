@@ -8,10 +8,13 @@
 
 function navBarSubmitClick(evt){
   evt.preventDefault();
-  hidePageComponents()
-  $allStoriesList.show()
-  $submitForm.show()
+  hidePageComponents();
+  $allStoriesList.show();
+  $submitForm.show();
+
 }
+
+$navSubmitStory.on('click', navBarSubmitClick);
 
 
 

@@ -1,5 +1,6 @@
 "use strict";
 
+
 // This is the global list of the stories, an instance of StoryList
 let storyList;
 
@@ -50,3 +51,20 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+
+async function submitStoryAndPutOnPage(){
+
+  const author = $('#create-author').val();
+  const title = $('#create-title').val();
+  const url = $('#create-url').val();
+
+  const response = await storyList.addStory(currentUser, {author, title, url});
+
+  const $response = generateStoryMarkup(response);
+  $allStoriesList.prepend($response);
+
+
+}
+
+$submitForm.on('submit', submitStoryAndPutOnPage);

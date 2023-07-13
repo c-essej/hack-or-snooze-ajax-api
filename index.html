@@ -33,10 +33,13 @@
 <nav>
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+
   </div>
-  //TODO: Navabar 2B
-  <div class="submit-navbar">
-    <a class="navbar-link" href="">Submit</a>
+  <!-- TODO: hide these later -->
+  <div class="main-nav-links hidden">
+    <a class="nav-link" href="#" id="nav-submit-story">Submit</a>
+    <a class="nav-link" href="#" id="nav-favorites">Favorites</a>
+    <a class="nav-link" href="#" id="nav-my-stories">My Stories</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -47,10 +50,23 @@
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
-  //TODO: hidden form
-  <form action="" id="submit-form" >
-    <label for="hidden"></label>
-      <input type="hidden" id="hidden">
+  <!-- TODO: hide this button later -->
+  <form action class="hidden" id="submit-form" >
+    <div>
+      <label for="create-author">Author</label>
+      <input id="create-author" placeholder="author name">
+    </div>
+    <div>
+      <label for="create-title">Story Title</label>
+      <input id="create-title" placeholder="story title">
+    </div>
+    <div>
+      <label for="create-url">Story url</label>
+      <input id="create-url" placeholder="story url">
+    </div>
+    <button id="final-submit" type="submit">Submit</button>
+
+
   </form>
 
   <!-- loading message (removed by JS after stories loaded) -->
