@@ -85,6 +85,10 @@ function generateStar (story,user){
 
 
 
+function toggleFavoriteStory(evt){
+  evt.preventDefault();
+  $star.toggle();
+}
 
 
 

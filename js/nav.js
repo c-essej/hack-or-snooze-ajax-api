@@ -4,6 +4,11 @@
  * Handling navbar clicks and updating navbar
  */
 
+
+const $favoritedStories = $('#favorited-stories');
+const $navBarFavorites = $('#nav-favorites');
+const $star = $('.star');
+
 //missing docstring
 
 function navBarSubmitClick(evt) {
@@ -49,3 +54,31 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+
+function showFavoriteList(){
+
+
+  if (currentUser.favorites.length === 0){
+    $favoritedStories.append(`<h3>No favorites added </h3>`)
+
+  } else {
+    for (let story of currentUser.favorites){
+      const stories = generateStoryMarkup(story)
+      $favoritedStories.append(stories);
+    }
+  }
+  $favoritedStories.show();
+}
+
+
+
+function navFavoriteClick(evt){
+  evt.preventDefault();
+  hidePageComponents();
+  showFavoriteList();
+}
+
+$navBarFavorites.on('click', navFavoriteClick);
+
+
