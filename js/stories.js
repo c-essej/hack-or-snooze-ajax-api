@@ -85,11 +85,20 @@ function generateStar (story,user){
 
 
 
-function toggleFavoriteStory(evt){
+async function toggleFavoriteStory(evt){
   evt.preventDefault();
-  $star.toggle();
+  const target = $(evt.target);
+const story = await Story.getStories(storyId)
+  if(target.hasClass('bi star-fill')){
+    await currentUser.removeFavorite(story)
+    target.closest("i").toggleClass('bi-star-fill bi-star')
+  } else {
+  await currentUser.addFavorite(story)
+  target.closest("i").toggleClass("bi-star bi-star-filled")
+  }
 }
 
+$storyList.on("click", ".star" , toggleFavoriteStory);
 
 
 

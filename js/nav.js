@@ -57,8 +57,6 @@ function updateNavOnLogin() {
 
 
 function showFavoriteList(){
-
-
   if (currentUser.favorites.length === 0){
     $favoritedStories.append(`<h3>No favorites added </h3>`)
 
@@ -70,6 +68,7 @@ function showFavoriteList(){
   }
   $favoritedStories.show();
 }
+
 
 
 
