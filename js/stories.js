@@ -20,7 +20,7 @@ async function getAndShowStoriesOnStart() {
  * Returns the markup for the story.
  */
 
-//returns long string of html, 
+//returns long string of html,
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
@@ -70,3 +70,19 @@ async function submitStoryAndPutOnPage(evt) {
 }
 
 $submitForm.on('submit', submitStoryAndPutOnPage);
+
+function isFavorite(story){
+  for (let i = 0; i < this.favorites; i++){
+    if (this.favorites[i].storyId === story.storyId){
+      return true;
+    }
+  }
+}
+
+function toggleStars(user, story){
+  const isAFavorite = user.isFavorite(story);
+  const star = isAFavorite ? "fill" : "" ;
+  return `<span class="star">
+  <i class="bi bi-star-fill"> </i>
+  </span>`
+}

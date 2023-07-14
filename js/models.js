@@ -212,4 +212,31 @@ class User {
       return null;
     }
   }
+
+
+  async addToFavorites(story){
+    this.favorites.push(story);
+
+    const token = this.loginToken;
+    const response = await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      data: {token},
+      method: "POST",
+    })
+  }
+
+  async removeFavorites(story){
+    this.favorites = this.favorites.filter(storyToRemove => {
+      storyToRemove.storyId !== story.storyId
+    });
+
+    const token = this.loginToken;
+    const response = await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      data: {token},
+      method: "DELETE",
+
+    })
+  }
+
 }
