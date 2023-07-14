@@ -4,11 +4,11 @@
  * Handling navbar clicks and updating navbar
  */
 
-/** Show main list of all stories when click site name */
+//missing docstring
 
-function navBarSubmitClick(evt){
+function navBarSubmitClick(evt) {
   evt.preventDefault();
-  hidePageComponents();
+  hidePageComponents(); //TODO: maybe you dont need it
   $allStoriesList.show();
   $submitForm.show();
 
@@ -17,7 +17,7 @@ function navBarSubmitClick(evt){
 $navSubmitStory.on('click', navBarSubmitClick);
 
 
-
+/** Show main list of all stories when click site name */
 function navAllStories(evt) {
   console.debug("navAllStories", evt);
   evt.preventDefault();

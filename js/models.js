@@ -25,7 +25,8 @@ class Story {
 
   getHostName() {
     // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    // return $('#create-url').val()
+    return new URL(this.url).host
   }
 }
 
@@ -75,11 +76,13 @@ class StoryList {
 
   async addStory(user, {title, author, url}) {
     // UNIMPLEMENTED: complete this function!
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvY28xIiwiaWF0IjoxNjg5MjgyNDY2fQ.AfPBipix3Ak3_uHpymF7Dc7XLljxjq-13jaF1vJ-diE";
+    //TODO: token code too long
+    //token of the current user
+    const token = user.loginToken
     const response = await axios({
       url: `${BASE_URL}/stories`,
       method: "POST",
-      data: {token: token , story: {title, author, url} },
+      data: {token: token , story: {title, author, url} }, //you can just say token if key and value same
     });
 
     console.log("response=", response);
@@ -87,7 +90,7 @@ class StoryList {
     console.log("newStoryInstance:", newStoryInstance)
     // this.story.push(newStoryInstance);
     // return newStoryInstance;
-    //TODO: WHY CANT I USE PUSH??? 
+    //TODO: WHY CANT I USE PUSH???
     this.stories.unshift(newStoryInstance)
     return newStoryInstance
   }

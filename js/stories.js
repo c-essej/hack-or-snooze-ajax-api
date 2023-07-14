@@ -20,6 +20,7 @@ async function getAndShowStoriesOnStart() {
  * Returns the markup for the story.
  */
 
+//returns long string of html, 
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
@@ -52,19 +53,20 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
-
-async function submitStoryAndPutOnPage(){
-
+/** Get values of author,title,url, send data to API and prepends the info to the story list
+ */
+//be more descriptive in docstring
+//where the values are coming from
+async function submitStoryAndPutOnPage(evt) {
+  evt.preventDefault();
   const author = $('#create-author').val();
   const title = $('#create-title').val();
   const url = $('#create-url').val();
-
-  const response = await storyList.addStory(currentUser, {author, title, url});
-
+  //change variable name newstoryinstance or something
+  const response = await storyList.addStory(currentUser, { author, title, url }); // storyList INstance
+  //
   const $response = generateStoryMarkup(response);
   $allStoriesList.prepend($response);
-
-
 }
 
 $submitForm.on('submit', submitStoryAndPutOnPage);
