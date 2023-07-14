@@ -25,8 +25,13 @@ function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+
+
   return $(`
       <li id="${story.storyId}">
+
+        ${currentUser === true ? toggleStars(story,currentUser) : ""}
+
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -63,10 +68,10 @@ async function submitStoryAndPutOnPage(evt) {
   const title = $('#create-title').val();
   const url = $('#create-url').val();
   //change variable name newstoryinstance or something
-  const response = await storyList.addStory(currentUser, { author, title, url }); // storyList INstance
+  const responseInstance = await storyList.addStory(currentUser, { author, title, url, username }); // storyList INstance
   //
-  const $response = generateStoryMarkup(response);
-  $allStoriesList.prepend($response);
+  const $responseInstance = generateStoryMarkup(responseInstance);
+  $allStoriesList.prepend($responseInstance);
 }
 
 $submitForm.on('submit', submitStoryAndPutOnPage);
@@ -75,14 +80,22 @@ function isFavorite(story){
   for (let i = 0; i < this.favorites; i++){
     if (this.favorites[i].storyId === story.storyId){
       return true;
+    }else{
+      return false
     }
   }
 }
 
-function toggleStars(user, story){
-  const isAFavorite = user.isFavorite(story);
-  const star = isAFavorite ? "fill" : "" ;
-  return `<span class="star">
-  <i class="bi bi-star-fill"> </i>
-  </span>`
+function toggleStars (story,user){
+  const isFavorite = user.isFavorite(story);
+  const star = isFavorite ? "-filled" : ""
+  return `<span class="star"> <i class="bi bi-star-fill"</i></span>`
 }
+
+
+
+
+
+
+
+
