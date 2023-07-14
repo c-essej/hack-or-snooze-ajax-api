@@ -239,4 +239,15 @@ class User {
     })
   }
 
+isFavorite(story){
+  for (let i = 0; i < this.favorites; i++){
+    if (this.favorites[i].storyId === story.storyId){
+      return true;
+    }else{
+      return false
+    }
+  }
+}
+
+
 }
